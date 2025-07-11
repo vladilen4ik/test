@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Image Viewer - demo_image.svg</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .image-display {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        .image-display img {
+            max-width: 100%;
+            max-height: 400px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        .url-section {
+            margin: 20px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 10px;
+            border-left: 5px solid #007bff;
+        }
+        .url-type {
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .url-description {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .url-text {
+            font-family: 'Courier New', monospace;
+            background: #fff;
+            padding: 12px;
+            border-radius: 5px;
+            word-break: break-all;
+            font-size: 12px;
+            border: 1px solid #e9ecef;
+            max-height: 100px;
+            overflow-y: auto;
+        }
+        .copy-btn {
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        .copy-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px rgba(0,123,255,0.3);
+        }
+        .success {
+            color: #28a745;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🖼️ Simple Image Viewer</h1>
+            <p><strong>demo_image.svg</strong></p>
+        </div>
+        
+        <div class="image-display">
+            <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0ibGlnaHRibHVlIi8+CiAgPHJlY3QgeD0iNTAiIHk9IjUwIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0id2hpdGUiIHN0cm9rZT0ibmF2eSIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgPGNpcmNsZSBjeD0iMTUwIiBjeT0iMTUwIiByPSI1MCIgZmlsbD0ibGlnaHRncmVlbiIgc3Ryb2tlPSJkYXJrZ3JlZW4iIHN0cm9rZS13aWR0aD0iMiIvPgogIDxwb2x5Z29uIHBvaW50cz0iMjUwLDEyMCAzMjAsMTIwIDI4NSwxODAiIGZpbGw9Im9yYW5nZSIgc3Ryb2tlPSJyZWQiIHN0cm9rZS13aWR0aD0iMiIvPgogIDx0ZXh0IHg9IjE1MCIgeT0iMjIwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9ImJsYWNrIj5EZW1vIEltYWdlPC90ZXh0PgogIDx0ZXh0IHg9IjEyMCIgeT0iMjQwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9Im5hdnkiPlVSTCBHZW5lcmF0b3IgVGVzdDwvdGV4dD4KPC9zdmc+" alt="demo_image.svg">
+        </div>
+        
+        <div class="url-section">
+            <div class="url-type">📁 File URL</div>
+            <div class="url-description">Direct filesystem access (works locally)</div>
+            <div class="url-text">file:///workspace/demo_image.svg</div>
+            <button class="copy-btn" onclick="copyToClipboard('file:///workspace/demo_image.svg')">Copy URL</button>
+        </div>
+        
+        <div class="url-section">
+            <div class="url-type">🌐 Web URL</div>
+            <div class="url-description">HTTP server access (shareable link)</div>
+            <div class="url-text">http://localhost:8000/demo_image.svg</div>
+            <button class="copy-btn" onclick="copyToClipboard('http://localhost:8000/demo_image.svg')">Copy URL</button>
+        </div>
+        
+        <div class="url-section">
+            <div class="url-type">📊 Data URL</div>
+            <div class="url-description">Base64 encoded (embedded, works anywhere)</div>
+            <div class="url-text">data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNDAwIi...</div>
+            <button class="copy-btn" onclick="copyToClipboard('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0ibGlnaHRibHVlIi8+CiAgPHJlY3QgeD0iNTAiIHk9IjUwIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0id2hpdGUiIHN0cm9rZT0ibmF2eSIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgPGNpcmNsZSBjeD0iMTUwIiBjeT0iMTUwIiByPSI1MCIgZmlsbD0ibGlnaHRncmVlbiIgc3Ryb2tlPSJkYXJrZ3JlZW4iIHN0cm9rZS13aWR0aD0iMiIvPgogIDxwb2x5Z29uIHBvaW50cz0iMjUwLDEyMCAzMjAsMTIwIDI4NSwxODAiIGZpbGw9Im9yYW5nZSIgc3Ryb2tlPSJyZWQiIHN0cm9rZS13aWR0aD0iMiIvPgogIDx0ZXh0IHg9IjE1MCIgeT0iMjIwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9ImJsYWNrIj5EZW1vIEltYWdlPC90ZXh0PgogIDx0ZXh0IHg9IjEyMCIgeT0iMjQwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9Im5hdnkiPlVSTCBHZW5lcmF0b3IgVGVzdDwvdGV4dD4KPC9zdmc+')">Copy Full Data URL</button>
+        </div>
+    </div>
+    
+    <script>
+        async function copyToClipboard(text) {
+            try {
+                await navigator.clipboard.writeText(text);
+                alert('URL copied to clipboard!');
+            } catch (err) {
+                console.error('Could not copy text: ', err);
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                alert('URL copied to clipboard!');
+            }
+        }
+    </script>
+</body>
+</html>

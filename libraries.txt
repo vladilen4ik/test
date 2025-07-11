@@ -1,0 +1,69 @@
+# Required Libraries for ESP32 HomeKit Lock Monitor
+
+## Install these libraries through Arduino IDE Library Manager:
+
+1. **HomeSpan** by HomeSpan
+   - Version: 2.1.2 or later
+   - Description: Full-featured Arduino library for creating HomeKit devices
+   - Installation: Tools → Manage Libraries → Search "HomeSpan"
+
+## ESP32 Board Package:
+
+2. **ESP32 Arduino Core** by Espressif Systems
+   - Version: 3.0.2 to 3.2.0
+   - Installation: File → Preferences → Additional Boards Manager URLs:
+     https://espressif.github.io/arduino-esp32/package_esp32_index.json
+   - Then: Tools → Board → Boards Manager → Search "ESP32"
+
+## Board Settings Recommendations:
+
+- **Board**: "ESP32 Dev Module" (or your specific ESP32 variant)
+- **Upload Speed**: 921600
+- **CPU Frequency**: 240MHz (WiFi/BT)
+- **Flash Frequency**: 80MHz
+- **Flash Mode**: QIO
+- **Flash Size**: 4MB (32Mb)
+- **Partition Scheme**: "Minimal SPIFFS (1.9MB APP with OTA/190KB SPIFFS)"
+- **Core Debug Level**: "None"
+- **PSRAM**: "Disabled"
+
+## Automatic Dependency Installation:
+
+The HomeSpan library will automatically install these dependencies:
+- WiFi (ESP32 Core)
+- WiFiClient (ESP32 Core)
+- WebServer (ESP32 Core)
+- ESPmDNS (ESP32 Core)
+- Preferences (ESP32 Core)
+- Update (ESP32 Core)
+
+## Memory Requirements:
+
+- **Flash Memory**: ~800KB (program) + ~200KB (HomeSpan library)
+- **RAM**: ~150KB during operation
+- **Recommended ESP32**: 4MB Flash minimum
+
+## Compatible ESP32 Variants:
+
+✅ ESP32 (original)
+✅ ESP32-S2
+✅ ESP32-S3  
+✅ ESP32-C3
+✅ ESP32-C6
+❌ ESP8266 (not supported by HomeSpan)
+
+## Installation Steps:
+
+1. Install Arduino IDE (1.8.0+)
+2. Add ESP32 board package URL to preferences
+3. Install ESP32 boards from Board Manager
+4. Install HomeSpan library from Library Manager
+5. Select correct board and port
+6. Upload the sketch
+
+## Verification:
+
+After installation, verify by:
+1. Opening: File → Examples → HomeSpan → 01-SimpleLightBulb
+2. Compiling the example (should compile without errors)
+3. If compilation succeeds, your setup is ready!
